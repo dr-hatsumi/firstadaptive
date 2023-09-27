@@ -1,0 +1,73 @@
+{
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Duplicate documents found",
+            "wrap": false,
+            "size": "large",
+            "style": "heading",
+            "color": "accent"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Multiple documents with the same file name were found:",
+            "wrap": true
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "Container",
+                    "items": [
+                        {
+                            "type": "FactSet",
+                            "facts": [
+                                {
+                                    "title": "Editor",
+                                    "value": "${Editor.DisplayName}"
+                                },
+                                {
+                                    "title": "Modified",
+                                    "value": "${formatDateTime(Modified, 'dd.MM.yyyy, HH:mm')}"
+                                }
+                            ],
+                            "separator": true,
+                            "isVisible": true
+                        },
+                        {
+                            "type": "ActionSet",
+                            "actions": [
+                                {
+                                    "type": "Action.OpenUrl",
+                                    "title": "Open file location",
+                                    "url": "${Link}"
+                                },
+                                {
+                                    "type": "Action.OpenUrl",
+                                    "title": "Move to recycle bin"
+                                },
+                                {
+                                    "type": "Action.OpenUrl",
+                                    "title": "Chat with editor"
+                                }
+                            ],
+                            "separator": true,
+                            "spacing": "None",
+                            "horizontalAlignment": "Left"
+                        }
+                    ],
+                    "separator": true,
+                    "$data": "${$root['value']}"
+                }
+            ]
+        },
+        {
+            "type": "TextBlock",
+            "text": "Please check if some of these are duplicates and delete the file if necessary.",
+            "wrap": true
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.4"
+}
